@@ -7,5 +7,6 @@ statsmodels
 matplotlib
 requests
 gunicorn
+ta
 joblib
 shap
