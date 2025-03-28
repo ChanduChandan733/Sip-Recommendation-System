@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Investment Recommendation</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        input, select {
+            padding: 8px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background: green;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>AI-Powered SIP Recommendation System</h2>
+        <form action="/predict" method="post">
+            Investment Amount Range: 
+            <input type="number" name="investment_amount_min" placeholder="Min Amount" required>
+            <input type="number" name="investment_amount_max" placeholder="Max Amount" required><br>
+            Investment Duration (Years): 
+            <input type="number" name="investment_duration" required><br>
+            Risk Appetite:
+            <select name="risk_appetite">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select><br>
+            Market Sentiment:
+            <select name="market_sentiment">
+                <option value="bullish">Bullish</option>
+                <option value="neutral">Neutral</option>
+                <option value="bearish">Bearish</option>
+            </select><br>
+            <input type="submit" value="Get Recommendation">
+        </form>
+    </div>
+</body>
+</html>

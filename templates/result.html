@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Investment Results</title>
+    <style>
+        body {
+            background: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        a {
+            color: #4caf50;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #ff5722;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Investment Recommendation</h2>
+        <p><strong>Market Phase</strong> : {{ result['market_cluster'] }}</p>
+        <p><strong>Phase Description</strong> : {{ result['market_phase'] }}</p>
+        <p><strong>Total Investment Amount </strong> : ₹{{ result['investment_recommendation'] }}</p>
+        <p><strong>Recommended Monthly Investment Amount</strong> : ₹{{result['monthly_investment'] }}</p>
+        <p><strong>Future Price Trend :</strong> : ₹{{ result['future_price_trend'] }}</p>
+       
+        
+        <h3>Market Trend Analysis</h3>
+        <p>Based on market indicators, the model suggests:
+            {% if result['market_cluster'] == 0 %}
+                A Bullish trend. Ideal for investing more.
+            {% elif result['market_cluster'] == 1 %}
+                A Neutral trend. Maintain your current investments.
+            {% elif result['market_cluster'] == 2 %}
+                A Bearish trend. Consider a defensive approach.    
+            {% else %}
+                A Bearish trend. Consider a defensive approach.
+            {% endif %}
+        </p>
+        
+        <h3>Feature Importance</h3>
+        <ul>
+            {% for feature, impact in result['feature_impact'].items() %}
+                <li>{{ feature }}: {{ impact }}</li>
+            {% endfor %}
+        </ul>
+        
+        <br>
+        <a href="/">Go Back</a>
+    </div>
+</body>
+</html>
